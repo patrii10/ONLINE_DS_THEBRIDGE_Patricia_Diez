@@ -4,7 +4,6 @@
 import numpy as np 
 import random
 
-
 class Barco: 
 
     def __init__(self, longitud, posicion_x= None, posicion_y = None, orientacion= None):
@@ -16,7 +15,7 @@ class Barco:
         self.disparos_pendientes = longitud
         self.posiciones = []
 
-   def set_posiciones(self, posiciones, orientacion):
+    def set_posiciones(self, posiciones, orientacion):
         self.posiciones = posiciones
         self.orientacion = orientacion
 
@@ -41,7 +40,7 @@ class Tablero:
         self.tablero_disparo = np.full((TABLERO_LONGITUD, TABLERO_LONGITUD), " ")
         self.barcos_restantes = len(barcos)  # Número total de barcos en el tablero
         self.total_disparos = 0 
-        
+
     def colocar_barcos(self):
         for barco in self.barcos:
             colocado = False
@@ -63,17 +62,17 @@ class Tablero:
                     fila = random.randint(barco.longitud - 1, TABLERO_LONGITUD - 1)
                     columna = random.randint(0, TABLERO_LONGITUD - 1)
                     posiciones = [(fila - i, columna) for i in range(barco.longitud)]
-                
+
                 if all(self.tablero_barcos[f][c] == CARACTER_AGUA for f, c in posiciones):
                     for f, c in posiciones:
                         self.tablero_barcos[f][c] = CARACTER_BARCO
                     barco.set_posiciones(posiciones, direccion)
                     colocado = True
-        
+
     def disparar(self, fila, columna):
         if self.tablero_disparo[fila, columna] in [CARACTER_DISPARO_OK, CARACTER_DISPARO_NOK]:
             print("Ya has disparado a esta posición")
-        
+
         elif self.tablero_barcos[fila, columna] == CARACTER_BARCO:
             self.tablero_disparo[fila, columna] = CARACTER_DISPARO_OK  # has dado a un barco
             self.barcos_restantes -= 1  # Reducimos el número de barcos restantes
@@ -95,46 +94,38 @@ class Tablero:
 
 ############CODIGO DE PRUEBA 
 
-
 #from variables import TABLERO_LONGITUD, CARACTER_AGUA, CARACTER_BARCO, CARACTER_DISPARO_OK, CARACTER_DISPARO_NOK
 import random
 import numpy as np
 
-
-
-# Primero, asegurate de que las variables estén definidas correctamente
-TABLERO_LONGITUD = 10  # Esto es solo un ejemplo, ajusta el tamaño según tu necesidad
+TABLERO_LONGITUD = 10  
 CARACTER_AGUA = '~'
 CARACTER_BARCO = 'X'
 CARACTER_DISPARO_OK = '*'
 CARACTER_DISPARO_NOK = '-'
 
-if __name__ == "__main__":
-    # Crear barcos
-    barco1 = Barco(longitud=3)
-    barco2 = Barco(longitud=4)
+# Crear algunos barcos (por ejemplo, uno de tamaño 3 y otro de tamaño 4)
+barco1 = Barco(longitud=3)
+barco2 = Barco(longitud=4)
 
-    # Crear un tablero con los barcos
-    tablero = Tablero(usuario="Jugador 1", barcos=[barco1, barco2])
+# Crear un tablero para un usuario
+tablero = Tablero(usuario="Jugador 1", barcos=[barco1, barco2])
 
-    # Colocar los barcos en el tablero
-    print("Colocando los barcos...")
-    tablero.colocar_barcos()
+# Colocar los barcos aleatoriamente en el tablero
+tablero.colocar_barcos()
 
-    # Mostrar el estado de los tableros
-    print("Mostrando los tableros...")
-    tablero.mostrar_tableros()
+# Mostrar el estado de los tableros
+tablero.mostrar_tableros()
 
-    # Realizar algunos disparos
-    print("\nDisparando a la posición (2, 3)...")
-    tablero.disparar(2, 3)
+# Realizar algunos disparos
+print("\nDisparando a la posición...")
+tablero.disparar(2, 3)
 
-    print("\nDisparando a la posición (4, 5)...")
-    tablero.disparar(4, 5)
+print("\nDisparando a la posición ...")
+tablero.disparar(4, 5)
 
-    print("\nDisparando a la posición (7, 7)...")
-    tablero.disparar(7, 7)
+print("\nDisparando a la posición...")
+tablero.disparar(7, 7)
 
-    # Mostrar el estado de los tableros después de los disparos
-    print("\nEstado de los tableros después de los disparos:")
-    tablero.mostrar_tableros()
+# Mostrar el estado de los tableros después de los disparos
+tablero.mostrar_tableros()
