@@ -1,8 +1,9 @@
 #Clase tablero 
-from variables import TABLERO_LONGITUD, CARACTER_AGUA, CARACTER_BARCO, CARACTER_DISPARO_OK, CARACTER_DISPARO_NOK
+#from variables import TABLERO_LONGITUD, CARACTER_AGUA, CARACTER_BARCO, CARACTER_DISPARO_OK, CARACTER_DISPARO_NOK
 
 import numpy as np 
 import random
+
 
 class Barco: 
 
@@ -95,16 +96,18 @@ class Tablero:
 ############CODIGO DE PRUEBA 
 
 
-from variables import TABLERO_LONGITUD, CARACTER_AGUA, CARACTER_BARCO, CARACTER_DISPARO_OK, CARACTER_DISPARO_NOK
+#from variables import TABLERO_LONGITUD, CARACTER_AGUA, CARACTER_BARCO, CARACTER_DISPARO_OK, CARACTER_DISPARO_NOK
 import random
 import numpy as np
 
+
+
 # Primero, asegurate de que las variables estén definidas correctamente
-#TABLERO_LONGITUD = 10  # Esto es solo un ejemplo, ajusta el tamaño según tu necesidad
-#CARACTER_AGUA = '~'
-#CARACTER_BARCO = 'X'
-#CARACTER_DISPARO_OK = '*'
-#CARACTER_DISPARO_NOK = '-'
+TABLERO_LONGITUD = 10  # Esto es solo un ejemplo, ajusta el tamaño según tu necesidad
+CARACTER_AGUA = '~'
+CARACTER_BARCO = 'X'
+CARACTER_DISPARO_OK = '*'
+CARACTER_DISPARO_NOK = '-'
 
 if __name__ == "__main__":
     # Crear barcos
