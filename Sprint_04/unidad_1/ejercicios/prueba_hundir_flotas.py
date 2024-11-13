@@ -106,32 +106,32 @@ import numpy as np
 #CARACTER_DISPARO_OK = '*'
 #CARACTER_DISPARO_NOK = '-'
 
-# Crear algunos barcos (por ejemplo, uno de tamaño 3 y otro de tamaño 4)
-barco1 = Barco(longitud=3)
-barco2 = Barco(longitud=4)
+if __name__ == "__main__":
+    # Crear barcos
+    barco1 = Barco(longitud=3)
+    barco2 = Barco(longitud=4)
 
-# Crear un tablero para un usuario
-tablero = Tablero(usuario="Jugador 1", barcos=[barco1, barco2])
+    # Crear un tablero con los barcos
+    tablero = Tablero(usuario="Jugador 1", barcos=[barco1, barco2])
 
-# Colocar los barcos aleatoriamente en el tablero
-tablero.colocar_barcos()
+    # Colocar los barcos en el tablero
+    print("Colocando los barcos...")
+    tablero.colocar_barcos()
 
-# Mostrar el estado de los tableros
-tablero.mostrar_tableros()
+    # Mostrar el estado de los tableros
+    print("Mostrando los tableros...")
+    tablero.mostrar_tableros()
 
-# Realizar algunos disparos
-print("\nDisparando a la posición (2, 3)...")
-tablero.disparar(2, 3)
+    # Realizar algunos disparos
+    print("\nDisparando a la posición (2, 3)...")
+    tablero.disparar(2, 3)
 
-print("\nDisparando a la posición (4, 5)...")
-tablero.disparar(4, 5)
+    print("\nDisparando a la posición (4, 5)...")
+    tablero.disparar(4, 5)
 
-print("\nDisparando a la posición (7, 7)...")
-tablero.disparar(7, 7)
+    print("\nDisparando a la posición (7, 7)...")
+    tablero.disparar(7, 7)
 
-# Mostrar el estado de los tableros después de los disparos
-tablero.mostrar_tableros()
-
-# Comprobar si algún barco ha sido hundido
-for barco in tablero.barcos:
-    barco.hundido()  # Esto imprimirá si algún barco ha sido hundido
+    # Mostrar el estado de los tableros después de los disparos
+    print("\nEstado de los tableros después de los disparos:")
+    tablero.mostrar_tableros()
