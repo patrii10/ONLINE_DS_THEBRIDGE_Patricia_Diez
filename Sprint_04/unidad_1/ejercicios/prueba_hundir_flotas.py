@@ -16,7 +16,7 @@ class Barco:
         self.disparos_pendientes = longitud
         self.posiciones = []
 
-   #### def set_posiciones(self, posiciones, orientacion):
+   def set_posiciones(self, posiciones, orientacion):
         self.posiciones = posiciones
         self.orientacion = orientacion
 
