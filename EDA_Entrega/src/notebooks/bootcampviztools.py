@@ -39,7 +39,24 @@ def pinta_distribucion_categoricas(df, columnas_categoricas, relativa=False, mos
     plt.tight_layout()
     plt.show()
 
+def plot_multiple_boxplots(df, columns, dim_matriz_visual = 2):
+    num_cols = len(columns)
+    num_rows = num_cols // dim_matriz_visual + num_cols % dim_matriz_visual
+    fig, axes = plt.subplots(num_rows, dim_matriz_visual, figsize=(12, 6 * num_rows))
+    axes = axes.flatten()
 
+    for i, column in enumerate(columns):
+        if df[column].dtype in ['int64', 'float64']:
+            sns.boxplot(data=df, x=column, ax=axes[i])
+            axes[i].set_title(column)
+
+    # Ocultar ejes vacíos
+    for j in range(i+1, num_rows * 2):
+        axes[j].axis('off')
+
+    plt.tight_layout()
+    plt.show()
+    
 def plot_categorical_relationship_fin(df, cat_col1, cat_col2, relative_freq=False, show_values=False, size_group = 5):
     # Prepara los datos
     count_data = df.groupby([cat_col1, cat_col2]).size().reset_index(name='count')
